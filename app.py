@@ -14,8 +14,15 @@ import io
 import tempfile  
 import base64    
 import mimetypes
-
 import requests
+import os
+import subprocess
+
+# Run post_install.sh on first startup (only if not already executed)
+if not os.path.exists("/tmp/post_install_done"):
+    subprocess.run(["bash", "post_install.sh"], check=True)
+    open("/tmp/post_install_done", "w").close()
+
 
 url = "hhttps://github.com/AKCNN-Repo/DeployShinyApp/releases/tag/V0.0.1/model_final.pth"
 response = requests.get(url)
