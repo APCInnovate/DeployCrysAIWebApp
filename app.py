@@ -18,6 +18,21 @@ import requests
 import os
 import subprocess
 
+def install_detectron2():
+    try:
+        import detectron2
+        print("Detectron2 is already installed.")
+    except ImportError:
+        print("Installing Detectron2...")
+        subprocess.run([
+            "pip", "install",
+            "git+https://github.com/facebookresearch/detectron2.git"
+        ], check=True)
+        print("Detectron2 installed successfully.")
+
+install_detectron2()
+
+
 # Run post_install.sh on first startup (only if not already executed)
 if not os.path.exists("/tmp/post_install_done"):
     subprocess.run(["bash", "post_install.sh"], check=True)
