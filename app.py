@@ -13,7 +13,15 @@ import plotly.figure_factory as ff
 import io
 import tempfile  
 import base64    
-import mimetypes  
+import mimetypes
+
+import requests
+
+url = "hhttps://github.com/AKCNN-Repo/DeployShinyApp/releases/tag/V0.0.1/model_final.pth"
+response = requests.get(url)
+with open("output/model_final.pth", "wb") as f:
+    f.write(response.content)
+
 
 # Shiny synchronous mode
 os.environ["SHINY_SYNC_MODE"] = "1"
