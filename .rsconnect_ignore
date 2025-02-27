@@ -1,0 +1,7 @@
+DATASETS/
+__pycache__/
+*.jpg
+*.png
+*.json
+*.h5
+*.pth
