@@ -20,3 +20,6 @@ python3 -m pip install --upgrade pip setuptools wheel
 # Install pycocotools separately
 pip install numpy cython
 pip install pycocotools
+
+# Install a specific OpenCV version to avoid attribute errors
+pip install opencv-python==4.5.5.64 opencv-python-headless==4.5.5.64
