@@ -3,5 +3,7 @@ __pycache__/
 *.jpg
 *.png
 *.json
-*.h5
 *.pth
+*.h5
+logs/
+node_modules/
