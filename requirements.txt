@@ -1,11 +1,3 @@
---find-links https://miropsota.github.io/torch_packages_builder
---find-links https://download.pytorch.org/whl/cu113
-
-torch==1.11.0
-torchvision==0.12.0
-torchaudio==0.11.0
-detectron2==0.6+pt1.11.0cu113
-
 absl-py==1.0.0
 albumentations==1.1.0
 alembic==1.14.0
@@ -127,11 +119,7 @@ threadpoolctl==3.1.0
 tifffile==2022.5.4
 tinycss2==1.4.0
 toolz==0.12.0
-torch==1.11.0
-torch-tb-profiler==0.4.0
-torchaudio==0.11.0
 torchsummary==1.5.1
-torchvision==0.12.0
 tqdm==4.64.0
 traitlets==5.14.3
 typing_extensions==4.12.2
@@ -147,3 +135,13 @@ Werkzeug==2.1.1
 wincertstore==0.2
 yacs==0.1.8
 yarg==0.1.9
+# Torch with CUDA 11.3
+torch==1.11.0+cu113
+torchvision==0.12.0+cu113
+torchaudio==0.11.0
+
+# Prebuilt Detectron2 for torch 1.11.0 + cu113
+detectron2==0.6+pt1.11.0cu113
+
+--extra-index-url https://download.pytorch.org/whl/cu113
+--extra-index-url https://miropsota.github.io/torch_packages_builder
