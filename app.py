@@ -143,7 +143,7 @@ def server(input: Inputs, output: Outputs, session: Session):
             cfg.OUTPUT_DIR,'model_final.pth'
         )
         cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = input.threshold()
-        cfg.MODEL.DEVICE = "cuda"
+        cfg.MODEL.DEVICE = "cpu"
         MetadataCatalog.get("manittol_s_test").set(things_classes=["Particle", "Bubble", "Droplet"])
         MetadataCatalog.get("manittol_s_test").set(things_colors=[(0, 0, 225), (0, 255, 0), (255, 0, 0)])
         manittol_s_test_metadata = MetadataCatalog.get("manittol_s_test")
