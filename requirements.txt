@@ -1,3 +1,11 @@
+--extra-index-url https://download.pytorch.org/whl/cu118
+--extra-index-url https://miropsota.github.io/torch_packages_builder
+
+torch==1.11.0+cu118
+torchvision==0.12.0+cu118
+torchaudio==0.11.0
+detectron2==0.6+2a420edpt1.11cu118
+
 absl-py==1.0.0
 albumentations==1.1.0
 alembic==1.14.0
@@ -139,4 +147,3 @@ Werkzeug==2.1.1
 wincertstore==0.2
 yacs==0.1.8
 yarg==0.1.9
-git+https://github.com/facebookresearch/detectron2.git
