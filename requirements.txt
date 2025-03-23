@@ -139,3 +139,4 @@ Werkzeug==2.1.1
 wincertstore==0.2
 yacs==0.1.8
 yarg==0.1.9
+git+https://github.com/facebookresearch/detectron2.git
