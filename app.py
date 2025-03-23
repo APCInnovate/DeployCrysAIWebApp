@@ -39,7 +39,10 @@ import subprocess
 #     open("/tmp/post_install_done", "w").close()
 
 
-url = "hhttps://github.com/AKCNN-Repo/DeployShinyApp/releases/tag/V0.0.1/model_final.pth"
+#url = "hhttps://github.com/AKCNN-Repo/DeployShinyApp/releases/tag/V0.0.1/model_final.pth"
+url = 'https://github.com/AKCNN-Repo/DeployShinyApp/releases/download/V0.0.1/model_final.pth'
+response = requests.get(url)
+
 response = requests.get(url)
 with open("output/model_final.pth", "wb") as f:
     f.write(response.content)
