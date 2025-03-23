@@ -123,7 +123,7 @@ def server(input: Inputs, output: Outputs, session: Session):
     @reactive.Calc
     def setup_predictor():
         cfg = get_cfg()
-        cfg.MODEL.DEVICE = "cuda"
+        cfg.MODEL.DEVICE = "cpu"
         cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_101_FPN_3x.yaml"))
         cfg.DATASETS.TRAIN = ("manittol_s_train",)
         cfg.DATASETS.TEST = ("manittol_s_test",)
