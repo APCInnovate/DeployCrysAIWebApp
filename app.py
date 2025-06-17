@@ -32,6 +32,30 @@ import requests
 import os
 import subprocess
 
+import torch
+from detectron2 import model_zoo
+from detectron2.engine import DefaultTrainer, DefaultPredictor
+from detectron2.config import get_cfg
+from detectron2.utils.visualizer import Visualizer, ColorMode
+from detectron2.data import DatasetCatalog, MetadataCatalog
+from detectron2.data.datasets import register_coco_instances
+
+# Register the datasets
+Data_Register_training = "manittol_s_train"
+Data_Register_valid = "manittol_s_test"
+register_coco_instances(
+    "manittol_s_train",
+    {},'./DATASETS/Train/COCO_Train_up.json','./DATASETS/Train/'
+)
+register_coco_instances(
+    "manittol_s_test",
+    {},'./DATASETS/Test/COCO_Test_up.json', './DATASETS/Test/'
+)
+metadata = MetadataCatalog.get(Data_Register_training)
+metadata_valid = MetadataCatalog.get(Data_Register_valid)
+dataset_train = DatasetCatalog.get(Data_Register_training)
+dataset_valid = DatasetCatalog.get(Data_Register_valid)
+
 url = 'https://github.com/APCInnovate/DeployCrysAIWebApp/releases/download/v0.0.1/model_final.pth'
 #url = 'https://github.com/AKCNN-Repo/DeployShinyApp/releases/download/V0.0.1/model_final.pth'
 response = requests.get(url)
@@ -379,13 +403,6 @@ app_ui = ui.page_fillable(
 
 ##### Server Definition START  #####
 def server(input: Inputs, output: Outputs, session: Session):
-    import torch
-    from detectron2 import model_zoo
-    from detectron2.engine import DefaultTrainer, DefaultPredictor
-    from detectron2.config import get_cfg
-    from detectron2.utils.visualizer import Visualizer, ColorMode
-    from detectron2.data import DatasetCatalog, MetadataCatalog
-    from detectron2.data.datasets import register_coco_instances
     
     metrics_store = reactive.Value(None)
     has_results = reactive.Value(False)
@@ -452,21 +469,7 @@ def server(input: Inputs, output: Outputs, session: Session):
                 )
             )
 
-    # Register the datasets
-    Data_Register_training = "manittol_s_train"
-    Data_Register_valid = "manittol_s_test"
-    register_coco_instances(
-        "manittol_s_train",
-        {},'./DATASETS/Train/COCO_Train_up.json','./DATASETS/Train/'
-    )
-    register_coco_instances(
-        "manittol_s_test",
-        {},'./DATASETS/Test/COCO_Test_up.json', './DATASETS/Test/'
-    )
-    metadata = MetadataCatalog.get(Data_Register_training)
-    metadata_valid = MetadataCatalog.get(Data_Register_valid)
-    dataset_train = DatasetCatalog.get(Data_Register_training)
-    dataset_valid = DatasetCatalog.get(Data_Register_valid)
+
 
     @reactive.Calc
     def setup_predictor():
